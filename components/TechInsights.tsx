@@ -3,7 +3,6 @@ import SectionContainer from './ui/SectionContainer';
 import { fetchTechTrends } from '../services/gemini';
 import { Sparkles, ExternalLink, RefreshCw } from 'lucide-react';
 import { motion } from 'framer-motion';
-import ReactMarkdown from 'react-markdown';
 
 const TechInsights: React.FC = () => {
   const [content, setContent] = useState<string>('');
@@ -51,8 +50,11 @@ const TechInsights: React.FC = () => {
               </div>
             ) : (
               <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-                <div className="lg:col-span-2 prose prose-lg dark:prose-invert prose-headings:font-display prose-headings:text-primary dark:prose-headings:text-primary-container prose-p:text-slate-600 dark:prose-p:text-slate-300 max-w-none">
-                  <ReactMarkdown>{content}</ReactMarkdown>
+                <div className="lg:col-span-2">
+                  {/* Using whitespace-pre-wrap to handle paragraphs from the API without a markdown library */}
+                  <div className="whitespace-pre-wrap text-lg leading-relaxed text-slate-600 dark:text-slate-300 font-sans">
+                    {content}
+                  </div>
                 </div>
                 
                 <div className="lg:col-span-1 border-t lg:border-t-0 lg:border-l border-slate-200 dark:border-slate-700 pt-8 lg:pt-0 lg:pl-8">
