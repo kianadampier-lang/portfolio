@@ -7,7 +7,7 @@ const Hero: React.FC = () => {
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-slate-50 dark:bg-slate-950 pt-16">
       {/* Background decoration */}
-      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+      <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <div className="absolute -top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-indigo-500/10 blur-[100px]" />
         <div className="absolute top-[20%] -left-[10%] w-[40%] h-[40%] rounded-full bg-purple-500/10 blur-[100px]" />
       </div>
@@ -33,7 +33,7 @@ const Hero: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#projects"
-              className="w-full sm:w-auto px-8 py-3.5 flex items-center justify-center gap-2 text-base font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-lg hover:shadow-indigo-500/30 transition-all duration-200"
+              className="w-full sm:w-auto px-8 py-3.5 flex items-center justify-center gap-2 text-base font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-lg hover:shadow-indigo-500/30 transition-all duration-200 cursor-pointer"
             >
               {HERO_CONTENT.ctaPrimary}
               <ArrowRight size={18} />
@@ -41,7 +41,7 @@ const Hero: React.FC = () => {
             
             <a
               href="#contact"
-              className="w-full sm:w-auto px-8 py-3.5 flex items-center justify-center gap-2 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg transition-all duration-200"
+              className="w-full sm:w-auto px-8 py-3.5 flex items-center justify-center gap-2 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg transition-all duration-200 cursor-pointer"
             >
               {HERO_CONTENT.ctaSecondary}
             </a>
