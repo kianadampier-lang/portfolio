@@ -1,4 +1,5 @@
 import React from 'react';
+import { motion } from 'framer-motion';
 import SectionContainer from './ui/SectionContainer';
 import { PROJECTS } from '../constants';
 import { Github, ExternalLink } from 'lucide-react';
@@ -15,9 +16,13 @@ const Projects: React.FC = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {PROJECTS.map((project) => (
-            <div 
-              key={project.id} 
+          {PROJECTS.map((project, index) => (
+            <motion.div 
+              key={project.id}
+              initial={{ opacity: 0, scale: 0.95, y: 20 }}
+              whileInView={{ opacity: 1, scale: 1, y: 0 }}
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ duration: 0.5, delay: index * 0.1 }}
               className="group bg-white dark:bg-slate-900 rounded-xl overflow-hidden border border-slate-200 dark:border-slate-800 hover:border-indigo-500/50 dark:hover:border-indigo-500/50 hover:shadow-xl transition-all duration-300 flex flex-col h-full"
             >
               {/* Image */}
@@ -68,7 +73,7 @@ const Projects: React.FC = () => {
                   ))}
                 </div>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </SectionContainer>
