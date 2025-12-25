@@ -1,9 +1,26 @@
 import React from 'react';
-import { ArrowRight, Download } from 'lucide-react';
+import { ArrowRight } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { HERO_CONTENT } from '../constants';
 
 const Hero: React.FC = () => {
+  const handleScroll = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    e.preventDefault();
+    const targetId = href.replace('#', '');
+    const elem = document.getElementById(targetId);
+    
+    if (elem) {
+      const headerOffset = 80;
+      const elementPosition = elem.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.scrollY - headerOffset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: 'smooth'
+      });
+    }
+  };
+
   return (
     <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-slate-50 dark:bg-slate-950 pt-16">
       {/* Background decoration */}
@@ -33,6 +50,7 @@ const Hero: React.FC = () => {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <a
               href="#projects"
+              onClick={(e) => handleScroll(e, '#projects')}
               className="w-full sm:w-auto px-8 py-3.5 flex items-center justify-center gap-2 text-base font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-lg hover:shadow-indigo-500/30 transition-all duration-200 cursor-pointer"
             >
               {HERO_CONTENT.ctaPrimary}
@@ -41,6 +59,7 @@ const Hero: React.FC = () => {
             
             <a
               href="#contact"
+              onClick={(e) => handleScroll(e, '#contact')}
               className="w-full sm:w-auto px-8 py-3.5 flex items-center justify-center gap-2 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg transition-all duration-200 cursor-pointer"
             >
               {HERO_CONTENT.ctaSecondary}
