@@ -1,10 +1,5 @@
 import { GoogleGenAI } from "@google/genai";
 
-// Initialize the API client
-// Note: In a production environment, API calls should be proxied through a backend 
-// to avoid exposing the key, or use stricter scoping.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
-
 export interface TechInsight {
   title: string;
   summary: string;
@@ -14,12 +9,14 @@ export interface TechInsight {
 
 export const fetchTechTrends = async (): Promise<{ content: string; sources: { title: string; url: string }[] }> => {
   try {
+    // Initialize the client inside the function to ensure process.env is available at execution time
+    const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+    
     const response = await ai.models.generateContent({
       model: 'gemini-3-flash-preview',
       contents: "What are the top 3 most exciting trends in frontend web development happening right now? Provide a brief enthusiastic summary for each.",
       config: {
         tools: [{ googleSearch: {} }],
-        // We let the model decide the structure, but we'll extract text and grounding metadata
       },
     });
 

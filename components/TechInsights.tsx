@@ -3,7 +3,7 @@ import SectionContainer from './ui/SectionContainer';
 import { fetchTechTrends } from '../services/gemini';
 import { Sparkles, ExternalLink, RefreshCw } from 'lucide-react';
 import { motion } from 'framer-motion';
-import ReactMarkdown from 'https://esm.sh/react-markdown@9';
+import ReactMarkdown from 'react-markdown';
 
 const TechInsights: React.FC = () => {
   const [content, setContent] = useState<string>('');
