@@ -39,19 +39,29 @@ const Projects: React.FC = () => {
                     rel="noopener noreferrer"
                     className="p-2 bg-white rounded-full text-slate-900 hover:text-indigo-600 transition-colors"
                     aria-label="View Source"
+                    title="View Source Code"
                   >
                     <Github size={20} />
                   </a>
-                  {project.demoUrl && (
+                  {project.demoUrl ? (
                     <a 
                       href={project.demoUrl} 
                       target="_blank"
                       rel="noopener noreferrer"
                       className="p-2 bg-white rounded-full text-slate-900 hover:text-indigo-600 transition-colors"
                       aria-label="View Live Demo"
+                      title="View Live Demo"
                     >
                       <ExternalLink size={20} />
                     </a>
+                  ) : (
+                    <span 
+                      className="p-2 bg-white/60 rounded-full text-slate-500/60 cursor-not-allowed"
+                      aria-label="No Live Demo Available"
+                      title="No Live Demo Available"
+                    >
+                      <ExternalLink size={20} />
+                    </span>
                   )}
                 </div>
               </div>
