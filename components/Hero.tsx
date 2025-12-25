@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Download } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { HERO_CONTENT } from '../constants';
 
@@ -22,45 +22,51 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-slate-50 dark:bg-slate-950 pt-16">
-      {/* Background decoration */}
+    <section id="home" className="min-h-screen flex items-center justify-center relative overflow-hidden bg-surface dark:bg-[#141218] pt-16">
+      {/* Abstract Shapes */}
       <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none z-0">
-        <div className="absolute -top-[20%] -right-[10%] w-[50%] h-[50%] rounded-full bg-indigo-500/10 blur-[100px]" />
-        <div className="absolute top-[20%] -left-[10%] w-[40%] h-[40%] rounded-full bg-purple-500/10 blur-[100px]" />
+        <div className="absolute top-[10%] left-[5%] w-72 h-72 bg-primary-container rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob" />
+        <div className="absolute top-[20%] right-[10%] w-96 h-96 bg-tertiary-container rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-2000" />
+        <div className="absolute -bottom-32 left-[20%] w-80 h-80 bg-secondary-container rounded-full mix-blend-multiply filter blur-3xl opacity-30 animate-blob animation-delay-4000" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8 }}
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, type: "spring" }}
+          className="flex flex-col items-center"
         >
-          <span className="inline-block px-3 py-1 mb-4 text-xs font-semibold tracking-wider text-indigo-600 uppercase bg-indigo-50 rounded-full dark:bg-indigo-900/30 dark:text-indigo-400 border border-indigo-100 dark:border-indigo-800">
-            {HERO_CONTENT.role}
-          </span>
-          
-          <h1 className="text-4xl sm:text-6xl md:text-7xl font-bold tracking-tight text-slate-900 dark:text-white mb-6">
-            Hello, I'm <span className="text-indigo-600 dark:text-indigo-400">{HERO_CONTENT.name}</span>
+          <div className="inline-flex items-center px-4 py-2 rounded-full bg-surface-container dark:bg-[#2B2930] border border-outline/10 mb-8">
+            <span className="w-2 h-2 rounded-full bg-green-500 mr-2 animate-pulse"></span>
+            <span className="text-sm font-medium text-slate-600 dark:text-slate-300">Available for work</span>
+          </div>
+
+          <h1 className="text-5xl sm:text-7xl md:text-8xl font-display font-bold tracking-tight text-slate-900 dark:text-white mb-8 leading-[1.1]">
+            <span className="block">{HERO_CONTENT.name.split(' ')[0]}</span>
+            <span className="block text-transparent bg-clip-text bg-gradient-to-r from-primary to-tertiary">
+              {HERO_CONTENT.name.split(' ')[1]}
+            </span>
           </h1>
           
-          <p className="max-w-2xl mx-auto text-lg sm:text-xl text-slate-600 dark:text-slate-300 mb-8 leading-relaxed">
+          <p className="max-w-2xl mx-auto text-xl md:text-2xl text-slate-600 dark:text-slate-300 mb-10 leading-relaxed font-light">
             {HERO_CONTENT.tagline}
           </p>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 w-full sm:w-auto">
             <a
               href="#projects"
               onClick={(e) => handleScroll(e, '#projects')}
-              className="w-full sm:w-auto px-8 py-3.5 flex items-center justify-center gap-2 text-base font-semibold text-white bg-indigo-600 hover:bg-indigo-700 rounded-lg shadow-lg hover:shadow-indigo-500/30 transition-all duration-200 cursor-pointer"
+              className="group relative inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-white transition-all duration-200 bg-slate-900 dark:bg-primary rounded-full hover:bg-slate-800 dark:hover:bg-primary/90 hover:scale-105 hover:shadow-xl focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-slate-900 dark:focus:ring-offset-slate-900 w-full sm:w-auto"
             >
               {HERO_CONTENT.ctaPrimary}
-              <ArrowRight size={18} />
+              <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </a>
             
             <a
               href="#contact"
               onClick={(e) => handleScroll(e, '#contact')}
-              className="w-full sm:w-auto px-8 py-3.5 flex items-center justify-center gap-2 text-base font-semibold text-slate-700 dark:text-slate-200 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 rounded-lg transition-all duration-200 cursor-pointer"
+              className="inline-flex items-center justify-center px-8 py-4 text-lg font-medium text-slate-900 dark:text-white transition-all duration-200 bg-white dark:bg-[#2B2930] border border-slate-200 dark:border-slate-700 rounded-full hover:bg-slate-50 dark:hover:bg-[#36343b] hover:border-slate-300 w-full sm:w-auto"
             >
               {HERO_CONTENT.ctaSecondary}
             </a>
